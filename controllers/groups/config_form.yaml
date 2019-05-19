@@ -1,0 +1,10 @@
+name: Groups
+form: $/shohabbos/customfields/models/group/fields.yaml
+modelClass: Shohabbos\Customfields\Models\Group
+defaultRedirect: shohabbos/customfields/groups
+create:
+    redirect: 'shohabbos/customfields/groups/update/:id'
+    redirectClose: shohabbos/customfields/groups
+update:
+    redirect: shohabbos/customfields/groups
+    redirectClose: shohabbos/customfields/groups

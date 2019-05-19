@@ -1,0 +1,74 @@
+fields:
+    active:
+        label: 'shohabbos.customfields::lang.field.active'
+        span: left
+        default: 1
+        type: switch
+    settings[is_translatable]:
+        label: 'shohabbos.customfields::lang.field.property_is_translatable'
+        span: right
+        type: checkbox
+    name:
+        label: 'shohabbos.customfields::lang.field.name'
+        span: left
+        required: 1
+        type: text
+    type:
+        label: 'shohabbos.customfields::lang.field.type'
+        span: right
+        type: dropdown
+    external_id:
+        label: 'shohabbos.customfields::lang.field.external_id'
+        span: left
+        type: text
+    settings[tab]:
+        label: 'shohabbos.customfields::lang.field.property_tab'
+        span: right
+        type: text
+    'property_value':
+        label: 'shohabbos.customfields::lang.field.property_list_value'
+        prompt: 'shohabbos.customfields::lang.button.add_property_value'
+        span: right
+        type: partial
+        trigger:
+            action: show
+            field: type
+            condition: 'value[select] || value[checkbox] || value[radio] || value[balloon_selector] || value[tag_list]'
+    'settings[datepicker]':
+        label: 'shohabbos.customfields::lang.field.property_mode'
+        span: right
+        options:
+            date: 'shohabbos.customfields::lang.field.date'
+            datetime: 'shohabbos.customfields::lang.field.datetime'
+            time: 'shohabbos.customfields::lang.field.time'
+        trigger:
+            action: show
+            field: type
+            condition: 'value[date]'
+        type: dropdown
+    'settings[mediafinder]':
+        label: 'shohabbos.customfields::lang.field.property_mode'
+        span: right
+        options:
+            file: 'shohabbos.customfields::lang.field.file'
+            image: 'shohabbos.customfields::lang.field.image'
+        trigger:
+            action: show
+            field: type
+            condition: 'value[mediafinder]'
+        type: dropdown
+    code:
+        label: 'shohabbos.customfields::lang.field.code'
+        span: left
+        type: text
+    measure:
+        label: 'lovata.propertiesshopaholic::lang.field.measure'
+        span: left
+        nameFrom: name
+        descriptionFrom: description
+        type: relation
+        emptyOption: 'shohabbos.customfields::lang.field.empty'
+    description:
+        label: 'shohabbos.customfields::lang.field.description'
+        span: left
+        type: textarea

@@ -1,0 +1,4 @@
+title: Properties
+modelClass: Shohabbos\Customfields\Models\Property
+toolbar:
+    buttons: reorder_toolbar

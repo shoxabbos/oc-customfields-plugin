@@ -1,0 +1,28 @@
+plugin:
+    name: 'shohabbos.customfields::lang.plugin.name'
+    description: 'shohabbos.customfields::lang.plugin.description'
+    author: Shohabbos
+    icon: oc-icon-code
+    homepage: ''
+permissions:
+    manage_properties:
+        tab: 'shohabbos.customfields::lang.plugin.name'
+        label: 'Manage properties'
+    manage_groups:
+        tab: 'shohabbos.customfields::lang.plugin.name'
+        label: 'Manage groups'
+navigation:
+    customfields:
+        label: 'shohabbos.customfields::lang.plugin.name'
+        url: shohabbos/customfields/groups
+        icon: icon-code
+        permissions:
+            - manage_groups
+            - manage_properties
+        sideMenu:
+            customfields-groups:
+                label: Groups
+                url: shohabbos/customfields/groups
+                icon: icon-sitemap
+                permissions:
+                    - manage_groups

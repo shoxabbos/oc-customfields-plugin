@@ -1,0 +1,17 @@
+1.0.1:
+    - 'Initialize plugin.'
+1.0.2:
+    - 'Created table shohabbos_customfields_properties'
+    - builder_table_create_shohabbos_customfields_properties.php
+1.0.3:
+    - 'Updated table shohabbos_customfields_properties'
+    - builder_table_update_shohabbos_customfields_properties.php
+1.0.4:
+    - 'Updated table shohabbos_customfields_properties'
+    - builder_table_update_shohabbos_customfields_properties_2.php
+1.0.5:
+    - 'Updated table shohabbos_customfields_properties'
+    - builder_table_update_shohabbos_customfields_properties_3.php
+1.0.6:
+    - 'Created table shohabbos_customfields_groups'
+    - builder_table_create_shohabbos_customfields_groups.php

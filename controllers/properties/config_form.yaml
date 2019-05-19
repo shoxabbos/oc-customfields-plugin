@@ -1,0 +1,10 @@
+name: Properties
+form: $/shohabbos/customfields/models/property/fields.yaml
+modelClass: Shohabbos\Customfields\Models\Property
+defaultRedirect: shohabbos/customfields/properties
+create:
+    redirect: 'shohabbos/customfields/properties/update/:id'
+    redirectClose: shohabbos/customfields/properties
+update:
+    redirect: shohabbos/customfields/properties
+    redirectClose: shohabbos/customfields/properties

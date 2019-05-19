@@ -1,0 +1,18 @@
+fields:
+    name:
+        label: Name
+        span: auto
+        type: text
+    code:
+        label: Code
+        span: auto
+        type: text
+    description:
+        label: Description
+        size: large
+        span: auto
+        type: textarea
+    page:
+        label: Page
+        span: auto
+        type: dropdown

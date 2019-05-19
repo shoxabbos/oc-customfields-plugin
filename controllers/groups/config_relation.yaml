@@ -1,0 +1,12 @@
+# ===================================
+#  Relation Behavior Config
+# ===================================
+
+properties:
+    label: Property
+    manage:
+        form: $/shohabbos/customfields/models/property/fields.yaml
+        list: $/shohabbos/customfields/models/property/columns.yaml
+    view:
+        list: $/shohabbos/customfields/models/property/columns.yaml
+        toolbarButtons: create|delete
