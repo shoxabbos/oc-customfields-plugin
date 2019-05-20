@@ -5,30 +5,25 @@ columns:
     name:
         label: name
         type: text
-    created_at:
-        label: created_at
-        type: datetime
-    updated_at:
-        label: updated_at
-        type: datetime
-    active:
-        label: active
-        type: text
-    slug:
-        label: slug
-        type: text
-    code:
-        label: code
-        type: text
-    description:
-        label: description
-        type: text
     type:
         label: type
         type: text
-    settings:
-        label: settings
-        type: text
-    sort_order:
-        label: sort_order
+    group_id:
+        label: group_id
         type: number
+        invisible: true
+    label:
+        label: label
+        type: text
+    comment:
+        label: comment
+        type: text
+        invisible: true
+    created_at:
+        label: created_at
+        type: datetime
+        invisible: true
+    updated_at:
+        label: updated_at
+        type: datetime
+        invisible: true

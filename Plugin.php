@@ -30,21 +30,40 @@ class Plugin extends PluginBase
 			        if (isset($this->customfields) && $this->customfields) {
 			            return $this->customfields;
 			        } else {
-			            return $this->customfields = time().rand();
+                        $pageId = str_replace(".htm", "", $model->fileName);
+                        $group = Group::where('page', $pageId)->first();
+
+			            return $this->customfields = isset($group->properties) ? $group->properties : [];
 			        }
 			    });
 
-                $model->addDynamicMethod('setCustomfieldsAttribute', function() use ($model) {
-                    if (isset($this->customfields) && $this->customfields) {
-                        return $this->customfields;
-                    } else {
-                        return $this->customfields = time().rand();
+
+                $model->addDynamicMethod('getCustomfield', function($name) use ($model) {
+			        return $this->customfields;
+			    });
+
+                $model->addDynamicMethod('setCustomfield', function($name, $value) use ($model) {
+                    $pageId = str_replace(".htm", "", $model->fileName);
+                    $group = Group::where('page', $pageId)->first();
+
+                    if (!$group) {
+                        return;
+                    }
+
+                    return Property::where('group_id', $group->id)->where('name', $name)->update([
+                        'value' => $value
+                    ]);
+                });
+
+
+                $model->bindEvent('model.beforeSave', function() use ($model) {
+                    $customfields = $model->customfields;
+
+                    foreach (post('customfields') as $key => $value) {
+                        $model->setCustomfield($key, $value);                        
                     }
                 });
 
-                $model->addDynamicMethod('getCustomfield', function() use ($model) {
-			        return $this->customfields;
-			    });
 
             });
         });
@@ -59,16 +78,20 @@ class Plugin extends PluginBase
                 throw new ApplicationException(Lang::get('cms::lang.theme.edit.not_found'));
             }
     	 	
-            $pageId = str_replace(".htm", "", $widget->model->fileName);
-            $group = Group::where('page', $pageId)->first();
+            $customfields = $widget->model->getCustomfieldsAttribute();
+            if (empty($customfields)) {
+                return;
+            }
 
             $fields = [];
 
-            foreach ($group->properties as $key => $value) {
-                $fields["fields[{$value->name}]"] = [
+            foreach ($customfields as $key => $value) {
+                $fields["customfields[{$value->name}]"] = [
                     'label'   => $value->label,
                     'type'    => $value->type,
-                    'tab'     => $value->tab,
+                    'comment'     => $value->comment,
+                    'default'     => $value->default,
+                    'value'     => $value->value,
                 ];
             }
 

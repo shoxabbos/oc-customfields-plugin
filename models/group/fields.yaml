@@ -9,10 +9,17 @@ fields:
         type: text
     description:
         label: Description
-        size: large
+        size: small
         span: auto
         type: textarea
     page:
         label: Page
         span: auto
         type: dropdown
+tabs:
+    fields:
+        properties:
+            span: full
+            path: field_properties
+            type: partial
+            tab: 'Tab 1'
