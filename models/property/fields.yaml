@@ -32,8 +32,3 @@ fields:
         label: Default
         span: auto
         type: text
-    value:
-        label: Value
-        size: large
-        span: auto
-        type: textarea

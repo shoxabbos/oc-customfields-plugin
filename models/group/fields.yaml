@@ -1,10 +1,10 @@
 fields:
+    is_repeater:
+        label: 'Is repeater'
+        span: full
+        type: switch
     name:
-        label: Name
-        span: auto
-        type: text
-    code:
-        label: Code
+        label: 'Tab name'
         span: auto
         type: text
     page:

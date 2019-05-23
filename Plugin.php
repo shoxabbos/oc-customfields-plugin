@@ -28,6 +28,11 @@ class Plugin extends PluginBase
                 $translatable = $model->translatable;
 
                 foreach ($model->customfields as $value) {
+                    if ($value->is_repeater) {
+                        $translatable[] = $value->code;
+                        continue;
+                    }
+
                     foreach ($value->properties as $property) {
                         $translatable[] = $value->code."_".$property->name;
                     }
@@ -46,15 +51,39 @@ class Plugin extends PluginBase
                 throw new ApplicationException(Lang::get('cms::lang.theme.edit.not_found'));
             }
 
+            if ($widget->isNested) {
+                return;
+            }
+
             $customfields = $widget->model->customfields;
     	 	
             if (empty($customfields)) {
                 return;
             }
 
-            $fields = [];
-
             foreach ($customfields as $value) {
+                if ($value->is_repeater) {
+                    $repeater = [
+                        'label'     => $value->name,
+                        'type'      => 'repeater',
+                        'comment'   => "{{ this.page.{$value->code} }}",
+                        'tab'       => $value->name,
+                        'form'      => ['fields' => []]
+                    ];
+
+                    foreach ($value->properties as $property) {
+                        $repeater['form']['fields'][$property->name] = [
+                            'label'     => $property->label,
+                            'type'      => $property->type,
+                            'comment'   => $property->comment,
+                            'default'   => $property->default,
+                        ];
+                    }
+
+                    $widget->tabs['fields']["settings[{$value->code}]"] = $repeater;
+                    continue;
+                }
+
                 foreach ($value->properties as $property) {
                     $widget->tabs['fields']["settings[{$value->code}_{$property->name}]"] = [
                         'label'     => $property->label,

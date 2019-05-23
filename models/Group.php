@@ -9,7 +9,12 @@ use Cms\Classes\Page;
 class Group extends Model
 {
     use \October\Rain\Database\Traits\Validation;
-    
+    use \October\Rain\Database\Traits\Sluggable;
+
+    /**
+     * @var array Generate slugs for these attributes.
+     */
+    protected $slugs = ['code' => 'name'];
 
     /**
      * @var string The database table used by the model.
