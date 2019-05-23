@@ -59,7 +59,7 @@ class Plugin extends PluginBase
                     $widget->tabs['fields']["settings[{$value->code}_{$property->name}]"] = [
                         'label'     => $property->label,
                         'type'      => $property->type,
-                        'comment'   => $property->comment,
+                        'comment'   => $property->comment." - {{ this.page.{$value->code}_{$property->name} }}",
                         'default'   => $property->default,
                         'tab'       => $value->name
                     ];
