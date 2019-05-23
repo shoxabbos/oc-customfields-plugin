@@ -14,6 +14,8 @@ permissions:
     manage_cms_code_content:
         tab: 'shohabbos.customfields::lang.plugin.name'
         label: 'Edit cms code content'
+        roles: 
+            - publisher
 navigation:
     customfields:
         label: 'shohabbos.customfields::lang.plugin.name'
