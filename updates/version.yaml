@@ -33,3 +33,6 @@
 1.0.12:
     - 'Updated table shohabbos_customfields_properties'
     - builder_table_update_shohabbos_customfields_properties_9.php
+1.0.13:
+    - 'Updated table shohabbos_customfields_groups'
+    - builder_table_update_shohabbos_customfields_groups.php

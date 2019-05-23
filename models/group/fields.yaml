@@ -7,11 +7,6 @@ fields:
         label: Code
         span: auto
         type: text
-    description:
-        label: Description
-        size: small
-        span: auto
-        type: textarea
     page:
         label: Page
         span: auto
