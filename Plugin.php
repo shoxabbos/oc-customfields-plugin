@@ -3,6 +3,8 @@
 use System\Classes\PluginBase;
 use Cms\Classes\Page;
 use Cms\Classes\Theme;
+use Cms\Classes\Layout;
+use October\Rain\Parse\Syntax\Parser as SyntaxParser;
 
 use Shohabbos\Customfields\Models\Group;
 use Shohabbos\Customfields\Models\Property;
@@ -24,6 +26,29 @@ class Plugin extends PluginBase
                 return Group::where('page', $pageId)->get();
             });
 
+            $model->addDynamicMethod('listLayoutSyntaxFields', function() use ($model) {
+                $layout = $model->layout;
+
+                if (!$layout) {
+                    $layouts = $model->getLayoutOptions();
+                    $layout = count($layouts) ? array_keys($layouts)[0] : null;
+                }
+
+                if (!$layout) {
+                    return [];
+                }
+
+                $layout = Layout::load($model->theme, $layout);
+                if (!$layout) {
+                    return [];
+                }
+
+                $syntax = SyntaxParser::parse($layout->markup, ['tagPrefix' => 'page:']);
+                $result = $syntax->toEditor();
+
+                return $result;
+            });
+
             $model->bindEvent('model.afterFetch', function() use ($model) {
                 $translatable = $model->translatable;
 
@@ -36,6 +61,10 @@ class Plugin extends PluginBase
                     foreach ($value->properties as $property) {
                         $translatable[] = $value->code."_".$property->name;
                     }
+                }
+
+                foreach ($model->listLayoutSyntaxFields() as $fieldCode => $fieldConfig) {
+                    $translatable[] = "layout_".$fieldCode;
                 }
 
                 $model->addDynamicProperty('translatable', $translatable);
@@ -54,6 +83,24 @@ class Plugin extends PluginBase
             if ($widget->isNested) {
                 return;
             }
+
+
+            $fields = $widget->model->listLayoutSyntaxFields();
+            foreach ($fields as $fieldCode => $fieldConfig) {
+                if ($fieldConfig['type'] == 'fileupload') continue;
+
+                if ($fieldConfig['type'] == 'repeater') {
+                    $fieldConfig['form']['fields'] = array_get($fieldConfig, 'fields', []);
+                    unset($fieldConfig['fields']);
+                }
+
+                $fieldConfig['comment'] = isset($fieldConfig['comment']) 
+                    ? $fieldConfig['comment']."{{ this.page.layout_{$fieldCode} }}" 
+                    : "{{ this.page.layout_{$fieldCode} }}"; 
+
+                $widget->tabs['fields']['settings[layout_' . $fieldCode . ']'] = $fieldConfig;
+            }
+
 
             $customfields = $widget->model->customfields;
     	 	
