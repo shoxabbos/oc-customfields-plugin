@@ -7,9 +7,17 @@ fields:
         label: 'Type field'
         options:
             text: 'Text input'
+            number: Number
+            password: Password
+            richeditor: RichEditor
+            codeeditor: Codeeditor
+            colorpicker: Colorpicker
+            datepicker: Datepicker
+            mediafinder: Mediafinder
             checkbox: Checkbox
             textarea: Textarea
             section: Section
+            taglist: Taglist
         span: auto
         type: dropdown
     label:
