@@ -141,6 +141,15 @@ class Plugin extends PluginBase
                     ];
                 }
             }
+
+            // hide code content
+            $user = \BackendAuth::getUser();
+            if (!$user->hasAccess('manage_cms_code_content')) {
+                foreach ($widget->secondaryTabs['fields'] as &$value) {
+                    $value['hidden'] = true;
+                }
+            }
+
         });
 
     }
