@@ -1,14 +1,14 @@
 fields:
     is_repeater:
-        label: 'Is repeater'
+        label: 'shohabbos.customfields::lang.group.is_repeater'
         span: full
         type: switch
     name:
-        label: 'Tab name'
+        label: 'shohabbos.customfields::lang.group.name'
         span: auto
         type: text
     page:
-        label: Page
+        label: 'shohabbos.customfields::lang.group.page'
         span: auto
         type: dropdown
 tabs:

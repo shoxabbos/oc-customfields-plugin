@@ -1,10 +1,10 @@
 fields:
     name:
-        label: Name
+        label: 'Input name ()'
         span: auto
         type: text
     type:
-        label: 'Type field'
+        label: 'shohabbos.customfields::lang.property.type'
         options:
             text: 'Text input'
             number: Number
@@ -21,14 +21,14 @@ fields:
         span: auto
         type: dropdown
     label:
-        label: Label
+        label: 'shohabbos.customfields::lang.property.label'
         span: auto
         type: text
     comment:
-        label: Comment
+        label: 'shohabbos.customfields::lang.property.comment'
         span: auto
         type: text
     default:
-        label: Default
+        label: 'shohabbos.customfields::lang.property.default'
         span: auto
         type: text

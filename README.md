@@ -1,2 +1,2 @@
 # oc-customfields-plugin
-This plugin allows add custom any fields to CMS page 
+This plugin allows add custom fields to CMS page 
