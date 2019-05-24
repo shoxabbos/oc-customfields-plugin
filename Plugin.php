@@ -21,11 +21,13 @@ class Plugin extends PluginBase
 
     public function register() {
         Page::extend(function($model) {
+            // add method
             $model->addDynamicMethod('getCustomfieldsAttribute', function() use ($model) {
                 $pageId = str_replace(".htm", "", $model->fileName);
                 return Group::where('page', $pageId)->get();
             });
 
+            // add method
             $model->addDynamicMethod('listLayoutSyntaxFields', function() use ($model) {
                 $layout = $model->layout;
 
@@ -49,6 +51,7 @@ class Plugin extends PluginBase
                 return $result;
             });
 
+            // add translatable fields
             $model->bindEvent('model.afterFetch', function() use ($model) {
                 $translatable = $model->translatable;
 
@@ -84,7 +87,7 @@ class Plugin extends PluginBase
                 return;
             }
 
-
+            // add layout syntax fields
             $fields = $widget->model->listLayoutSyntaxFields();
             foreach ($fields as $fieldCode => $fieldConfig) {
                 if ($fieldConfig['type'] == 'fileupload') continue;
@@ -101,9 +104,8 @@ class Plugin extends PluginBase
                 $widget->tabs['fields']['settings[layout_' . $fieldCode . ']'] = $fieldConfig;
             }
 
-
+            // add custom fields
             $customfields = $widget->model->customfields;
-    	 	
             if (empty($customfields)) {
                 return;
             }
