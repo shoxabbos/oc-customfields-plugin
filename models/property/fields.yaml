@@ -1,6 +1,6 @@
 fields:
     name:
-        label: 'Input name ()'
+        label: 'Input name (ex: footer_text)'
         span: auto
         type: text
     type:

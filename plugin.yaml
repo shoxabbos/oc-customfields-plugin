@@ -13,7 +13,7 @@ permissions:
         label: 'Manage groups'
     manage_cms_code_content:
         tab: 'shohabbos.customfields::lang.plugin.name'
-        label: 'Edit cms code content'
+        label: 'shohabbos.customfields::lang.permession.manager_cms_code_content'
         roles: 
             - publisher
 navigation:
