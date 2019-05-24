@@ -115,7 +115,7 @@ class Plugin extends PluginBase
                     $repeater = [
                         'label'     => $value->name,
                         'type'      => 'repeater',
-                        'comment'   => "{{ this.page.{$value->code} }}",
+                        'comment'   => "{{ viewBag.{$value->code} }}",
                         'tab'       => $value->name,
                         'form'      => ['fields' => []]
                     ];
@@ -129,7 +129,7 @@ class Plugin extends PluginBase
                         ];
                     }
 
-                    $widget->tabs['fields']["settings[{$value->code}]"] = $repeater;
+                    $widget->tabs['fields']["viewBag[{$value->code}]"] = $repeater;
                     continue;
                 }
 
