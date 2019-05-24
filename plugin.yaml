@@ -14,7 +14,7 @@ permissions:
     manage_cms_code_content:
         tab: 'shohabbos.customfields::lang.plugin.name'
         label: 'shohabbos.customfields::lang.permession.manager_cms_code_content'
-        roles: 
+        roles:
             - publisher
 navigation:
     customfields:
@@ -26,7 +26,7 @@ navigation:
             - manage_properties
         sideMenu:
             customfields-groups:
-                label: Groups
+                label: 'shohabbos.customfields::lang.menu.groups'
                 url: shohabbos/customfields/groups
                 icon: icon-sitemap
                 permissions:

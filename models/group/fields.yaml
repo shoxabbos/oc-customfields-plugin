@@ -17,4 +17,4 @@ tabs:
             span: full
             path: field_properties
             type: partial
-            tab: 'Tab 1'
+            tab: 'shohabbos.customfields::lang.group.properties'

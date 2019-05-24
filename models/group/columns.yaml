@@ -3,20 +3,20 @@ columns:
         label: id
         type: number
     name:
-        label: name
+        label: 'shohabbos.customfields::lang.group.name'
         type: text
     code:
         label: code
         type: text
-    description:
-        label: description
-        type: text
     page:
-        label: page
+        label: 'shohabbos.customfields::lang.group.page'
         type: text
     created_at:
-        label: created_at
+        label: 'shohabbos.customfields::lang.group.created_at'
         type: datetime
     updated_at:
-        label: updated_at
+        label: 'shohabbos.customfields::lang.group.updated_at'
         type: datetime
+    is_repeater:
+        label: 'shohabbos.customfields::lang.group.is_repeater'
+        type: text

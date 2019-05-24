@@ -3,27 +3,23 @@ columns:
         label: id
         type: number
     name:
-        label: name
+        label: 'shohabbos.customfields::lang.property.name'
         type: text
     type:
-        label: type
+        label: 'shohabbos.customfields::lang.property.type'
         type: text
-    group_id:
-        label: group_id
-        type: number
-        invisible: true
     label:
-        label: label
+        label: 'shohabbos.customfields::lang.property.label'
         type: text
     comment:
-        label: comment
+        label: 'shohabbos.customfields::lang.property.comment'
         type: text
         invisible: true
     created_at:
-        label: created_at
+        label: 'shohabbos.customfields::lang.group.created_at'
         type: datetime
         invisible: true
     updated_at:
-        label: updated_at
+        label: 'shohabbos.customfields::lang.group.updated_at'
         type: datetime
         invisible: true

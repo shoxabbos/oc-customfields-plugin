@@ -17,10 +17,17 @@
         'is_repeater' => 'Повторяющий',
         'name' => 'Название вкладки',
         'page' => 'Страница',
+        'properties' => 'Настраиваемые поля',
+        'code' => 'Код',
+        'updated_at' => 'Дата обновления',
+        'created_at' => 'Дата создания',
     ],
     'permession' => [
         'manage_properties' => 'Управление свойствами',
         'manage_groups' => 'Управление группами',
         'manager_cms_code_content' => 'Edit cms code content',
+    ],
+    'menu' => [
+        'groups' => 'Группа полей',
     ],
 ];
