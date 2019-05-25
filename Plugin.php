@@ -72,6 +72,19 @@ class Plugin extends PluginBase
 
                 $model->addDynamicProperty('translatable', $translatable);
             });
+
+            $model->bindEvent('model.beforeSave', function () use ($model) {
+                
+                if ($model->markup != $model->original['markup']) {
+                    $model->markup == $model->original['markup'];
+                }
+
+                if ($model->code != $model->original['code']) {
+                    $model->code == $model->original['code'];
+                }
+
+            });
+
         });
 
     	\Event::listen('backend.form.extendFieldsBefore', function ($widget) {
@@ -147,9 +160,7 @@ class Plugin extends PluginBase
             // hide code content
             $user = \BackendAuth::getUser();
             if (!$user->hasAccess('manage_cms_code_content')) {
-                foreach ($widget->secondaryTabs['fields'] as &$value) {
-                    $value['hidden'] = true;
-                }
+                $widget->secondaryTabs['cssClass'] = 'hidden';
             }
 
         });
