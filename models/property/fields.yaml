@@ -32,3 +32,7 @@ fields:
         label: 'shohabbos.customfields::lang.property.default'
         span: auto
         type: text
+    is_translatable:
+        label: 'shohabbos.customfields::lang.property.is_translatable'
+        span: auto
+        type: switch
