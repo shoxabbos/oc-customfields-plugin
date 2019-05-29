@@ -47,3 +47,5 @@
     - builder_table_update_shohabbos_customfields_groups_3.php
 1.0.17:
     - 'Fixed bug when saving pages'
+1.0.18:
+    - 'Add Is translatable field to property form'

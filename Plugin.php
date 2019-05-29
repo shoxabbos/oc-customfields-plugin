@@ -62,7 +62,9 @@ class Plugin extends PluginBase
                     }
 
                     foreach ($value->properties as $property) {
-                        $translatable[] = $value->code."_".$property->name;
+                        if ($property->is_translatable) {
+                            $translatable[] = $value->code."_".$property->name;
+                        }
                     }
                 }
 

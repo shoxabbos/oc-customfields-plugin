@@ -12,6 +12,7 @@
         'default' => 'Default value',
         'name' => 'Property name (ex: footer_text)',
         'label' => 'Label',
+        'is_translatable' => 'Is translatable field',
     ],
     'group' => [
         'is_repeater' => 'Is repeater',
