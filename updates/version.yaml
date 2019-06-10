@@ -52,3 +52,6 @@
 1.0.19:
     - 'Update version.yaml file'
     - builder_table_update_shohabbos_customfields_properties_11.php
+1.0.20:
+    - 'Fixed the error that appears when creating a group with fields together'
+    - builder_table_update_shohabbos_customfields_properties_12.php

@@ -3,13 +3,13 @@
 use Schema;
 use October\Rain\Database\Updates\Migration;
 
-class BuilderTableUpdateShohabbosCustomfieldsProperties11 extends Migration
+class BuilderTableUpdateShohabbosCustomfieldsProperties12 extends Migration
 {
     public function up()
     {
         Schema::table('shohabbos_customfields_properties', function($table)
         {
-            $table->boolean('is_translatable')->default(0);
+            $table->integer('group_id')->nullable()->unsigned(false)->change();
         });
     }
     
@@ -17,8 +17,7 @@ class BuilderTableUpdateShohabbosCustomfieldsProperties11 extends Migration
     {
         Schema::table('shohabbos_customfields_properties', function($table)
         {
-            $table->dropColumn('is_translatable');
+            $table->integer('group_id')->nullable(false)->unsigned()->change();
         });
     }
-}
- 
+} 
