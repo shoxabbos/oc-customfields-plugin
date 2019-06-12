@@ -1,8 +1,4 @@
 fields:
-    is_repeater:
-        label: 'shohabbos.customfields::lang.group.is_repeater'
-        span: full
-        type: switch
     name:
         label: 'shohabbos.customfields::lang.group.name'
         span: auto
@@ -11,6 +7,18 @@ fields:
         label: 'shohabbos.customfields::lang.group.page'
         span: auto
         type: dropdown
+    position:
+        label: 'shohabbos.customfields::lang.group.position'
+        options:
+            primary: Primary
+            secondary: Secondary
+        showSearch: true
+        span: auto
+        type: dropdown
+    is_repeater:
+        label: 'shohabbos.customfields::lang.group.is_repeater'
+        span: auto
+        type: switch
 tabs:
     fields:
         properties:

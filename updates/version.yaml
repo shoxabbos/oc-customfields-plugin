@@ -55,3 +55,6 @@
 1.0.20:
     - 'Fixed the error that appears when creating a group with fields together'
     - builder_table_update_shohabbos_customfields_properties_12.php
+1.1.0:
+    - 'Added the ability to change the position of the tabs'
+    - builder_table_update_shohabbos_customfields_groups_4.php

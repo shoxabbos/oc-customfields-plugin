@@ -22,6 +22,7 @@
         'code' => 'Code',
         'updated_at' => 'Updated at',
         'created_at' => 'Created at',
+        'position' => 'Tab position',
     ],
     'permession' => [
         'manage_properties' => 'Manage properties',

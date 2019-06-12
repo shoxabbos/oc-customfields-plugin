@@ -22,6 +22,7 @@
         'code' => 'Код',
         'updated_at' => 'Дата обновления',
         'created_at' => 'Дата создания',
+        'position' => 'Позиция вкладки',
     ],
     'permession' => [
         'manage_properties' => 'Управление свойствами',

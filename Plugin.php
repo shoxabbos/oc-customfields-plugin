@@ -4,6 +4,7 @@ use System\Classes\PluginBase;
 use Cms\Classes\Page;
 use Cms\Classes\Theme;
 use Cms\Classes\Layout;
+use Cms\Controllers\Index as IndexController;
 use October\Rain\Parse\Syntax\Parser as SyntaxParser;
 
 use Shohabbos\Customfields\Models\Group;
@@ -20,6 +21,10 @@ class Plugin extends PluginBase
     }
 
     public function register() {
+        IndexController::extend(function($controller) {
+            $controller->addCss('/plugins/shohabbos/customfields/assets/css/main.css');
+        });
+
         Page::extend(function($model) {
             // add method
             $model->addDynamicMethod('getCustomfieldsAttribute', function() use ($model) {
@@ -89,6 +94,7 @@ class Plugin extends PluginBase
 
         });
 
+
     	\Event::listen('backend.form.extendFieldsBefore', function ($widget) {
             if (!$widget->model instanceof \Cms\Classes\Page) {
                 return;
@@ -132,7 +138,8 @@ class Plugin extends PluginBase
                         'type'      => 'repeater',
                         'comment'   => "{{ viewBag.{$value->code} }}",
                         'tab'       => $value->name,
-                        'form'      => ['fields' => []]
+                        'form'      => ['fields' => []],
+                        'cssClass'  => 'custom-field',
                     ];
 
                     foreach ($value->properties as $property) {
@@ -144,18 +151,29 @@ class Plugin extends PluginBase
                         ];
                     }
 
-                    $widget->tabs['fields']["viewBag[{$value->code}]"] = $repeater;
+                    if ($value->position == 'secondary') {
+                        $widget->secondaryTabs['fields']["viewBag[{$value->code}]"] = $repeater;
+                    } else {
+                        $widget->tabs['fields']["viewBag[{$value->code}]"] = $repeater;
+                    }
                     continue;
                 }
 
                 foreach ($value->properties as $property) {
-                    $widget->tabs['fields']["settings[{$value->code}_{$property->name}]"] = [
+                    $field = [
                         'label'     => $property->label,
                         'type'      => $property->type,
                         'comment'   => $property->comment." - {{ this.page.{$value->code}_{$property->name} }}",
                         'default'   => $property->default,
-                        'tab'       => $value->name
+                        'tab'       => $value->name,
+                        'cssClass'  => 'custom-field',
                     ];
+
+                    if ($value->position == 'secondary') {
+                        $widget->secondaryTabs['fields']["settings[{$value->code}_{$property->name}]"] = $field;
+                    } else {
+                        $widget->tabs['fields']["settings[{$value->code}_{$property->name}]"] = $field;
+                    }
                 }
             }
 
